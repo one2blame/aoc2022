@@ -1,8 +1,12 @@
 mod one;
+mod two;
 
 #[cfg(test)]
 mod tests {
-    use crate::one::solve::{first_puzzle, second_puzzle};
+    use crate::one::solve::first_puzzle as one_first_puzzle;
+    use crate::one::solve::second_puzzle as one_second_puzzle;
+    use crate::two::solve::first_puzzle as two_first_puzzle;
+    use crate::two::solve::second_puzzle as two_second_puzzle;
     use std::env;
     use std::fs::read_to_string;
     use std::path::PathBuf;
@@ -48,9 +52,19 @@ mod tests {
     #[test]
     fn one() {
         let puzzle_contents = get_puzzle_contents("one_puzzle.txt");
-        assert_eq!(first_puzzle(puzzle_contents), 75622);
+        assert_eq!(one_first_puzzle(puzzle_contents), 75622);
 
         let puzzle_contents = get_puzzle_contents("one_puzzle.txt");
-        assert_eq!(second_puzzle(puzzle_contents), 213159);
+        assert_eq!(one_second_puzzle(puzzle_contents), 213159);
+    }
+
+    /// Test for Day 2 of AoC 2022
+    #[test]
+    fn two() {
+        let puzzle_contents = get_puzzle_contents("two_puzzle.txt");
+        assert_eq!(two_first_puzzle(puzzle_contents), 11767);
+
+        let puzzle_contents = get_puzzle_contents("two_puzzle.txt");
+        assert_eq!(two_second_puzzle(puzzle_contents), 13886);
     }
 }
